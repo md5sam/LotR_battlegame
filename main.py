@@ -6,6 +6,7 @@ from action import *
 
 def main():
     """
+    set up and teardown here
     namedtuple order is Strength Agility Intelligence
     """
     print "Welcome to Middle Earth"
