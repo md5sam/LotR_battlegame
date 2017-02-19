@@ -1,6 +1,6 @@
-from character import *
-from inventory import *
-from arena import *
+import character
+import inventory
+import arena
 from action import *
 
 
@@ -9,6 +9,38 @@ def main():
     set up and teardown here
     namedtuple order is Strength Agility Intelligence
     """
+    character.spawn_characters()
+    inventory.populate_inventory()
+    arena.generate_arenas()
+
+    # access all characters ONLY through Character class attribute : Character.character_lists
+    # access all items ONLY through Item class attribute : Item.items_list
+
+    # for item in Item.items_list :
+    #     print type(item).__name__
+
+    # for k, v in Character.characters_dict.iteritems() :
+    #    print k, v
+
+    print "Choosing Aragorn ..."
+    print character.aragorn
+
+    print "Aragorn picks Anduril ..."
+    character.aragorn.pick_item(inventory.anduril)
+
+    print character.aragorn.item
+
+    character.lurtz.pick_item(inventory.morgul_blade)
+
+    combat(arena.moria, character.aragorn, character.lurtz)
+
+    # for k, v in character.aragorn.items.iteritems():
+    #    print k, v.name, v.impact, v.regen_time
+
+    # print "Or would you like to create a character ?"
+    # create_character(name="Thingol", race="Elf", attributes=(90, 90, 90))
+
+    """
     print "Welcome to Middle Earth"
     print "-----------------------"
     time.sleep(1)
@@ -16,6 +48,7 @@ def main():
     print "Alliance characters are : Gandalf, Frodo, Sam, Aragorn, Legolas, Gimli, Faramir, Eomer, Treebeard, Eowyn"
     print "Mordor characters are : Sauron, Saruman, Witch King, Balrog of Moria, Gollum, Shelob, Gorbag, Lurtz"
     print "-----------------------"
+
 
     choice = random.randrange(len(Character.characters_list))
     hero = Character.characters_list[choice]
@@ -49,33 +82,7 @@ def main():
     victor = combat(hero, opponent)
     print "xxxxxxxxxxxxxxxxxxxxxxx"
     print "To the victor : ", victor.name, ", go the spoils!"
+    """
 
 if __name__ == "__main__":
     main()
-
-
-
-
-
-
-    '''
-    gorbag = Orc("Gorbag", *(79,82,64))
-    gorbag.declare_name()
-    gorbag.declare_allegiance()
-    shagrat = Orc("Shagrat", *(78, 81, 68))
-
-    lurtz = UrukHai("Lurtz", *(85,81,82))
-    lurtz.declare_name()
-    lurtz.declare_allegiance()
-    lurtz.declare_ability()
-
-    aragorn = Human("Aragorn", *(94,93,92))
-    aragorn.declare_attributes()
-
-    Character.strongest_character()
-    print "Going to show all characters"
-    Character._show_all_characters()
-
-    victor = combat(aragorn, gorbag)
-    '''
-    #print "To the victor : ", victor.name, ", go the spoils!"

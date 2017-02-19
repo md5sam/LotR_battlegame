@@ -1,7 +1,7 @@
 from collections import defaultdict, OrderedDict, namedtuple
 
 
-class Item(object) :
+class Item(object):
     items_list = []
 
     def __init__(self, name, impact, regen_time):
@@ -15,6 +15,7 @@ class Item(object) :
         self.impact = impact
         self.regen_time = regen_time
         self.items_list.append(self)
+
 
 class Weapon(Item):
     """ the general class of weapons
@@ -39,15 +40,23 @@ class RangedWeapon(Weapon):
     """
 
 
-def populate_inventory() :
+def populate_inventory():
+    global anduril
     anduril = MeleeWeapon("Anduril", 50, 1)
+    global sting
     sting = MeleeWeapon("Sting", 30, 1)
+    global glamdring
     glamdring = MeleeWeapon("Glamdring", 30, 1)
+    global one_ring
     one_ring = MagicalObject("One Ring", 50, 1)
+    global phial_galadriel
     phial_galadriel = MagicalObject("Phial of Galadriel", 20, 2)
+    global staff_gandalf
     staff_gandalf = MagicalObject("Staff of Gandalf", 50, 1)
+    global bow_legolas
     bow_legolas = RangedWeapon("Bow of Legolas", 30, 1)
+    global axe_gimli
     axe_gimli = MeleeWeapon("Gimli's Axe", 30, 1)
+    global morgul_blade
     morgul_blade = MeleeWeapon("Morgul Blade", 40, 1)
 
-populate_inventory()

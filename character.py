@@ -1,25 +1,24 @@
-from collections import OrderedDict
-from collections import defaultdict
-from collections import namedtuple
+from collections import defaultdict, namedtuple
+
 
 class Character(object):
-    """ stores character attributes and methods """
-    _characters_dict = defaultdict(list)
+    _characters_dict_by_race = defaultdict(list)
     characters_list = []
+    characters_dict = defaultdict(object)
     ability = "undeclared"
     Attributes = namedtuple('Attributes', 'strength agility intelligence')
+    taunt = None
 
     def __init__(self, name, *attributes):
         """
-        :param name: "Name"
         :param *attributes : strength : / 100, agility : / 100, intelligence : / 100
-        :return:
         """
         self.name = name
         self.attributes = self.Attributes(*attributes)
-        self.items = self
+        self.item = None
         self.characters_list.append(self)
-        self._characters_dict[type(self).__name__].append(self.name)
+        self.characters_dict[self.name] = self
+        self._characters_dict_by_race[type(self).__name__].append(self.name)
 
     def declare_name(self):
         print "My name is ", self.name, "of race", type(self).__name__
@@ -30,21 +29,22 @@ class Character(object):
     def declare_attributes(self):
         print self.attributes
 
+    def pick_item(self, item):
+        self.item = item
+
     @classmethod
     def strongest_character(cls):
         """ iterates through every character created so far and prints strongest """
         max_strength = 0
-        #strongest = None
         for character in cls.characters_list:
             if character.attributes.strength > max_strength:
                 strongest = character
         print "The strongest character alive is :", strongest.name
 
-
     @classmethod
-    def _show_all_characters(cls) :
-        for k, v in cls._characters_dict.iteritems() :
-            print k, v 
+    def _show_all_characters(cls):
+        for k, v in cls._characters_dict.iteritems():
+            print k, v
 
 
 class Orc(Character):
@@ -57,77 +57,106 @@ class Orc(Character):
     def declare_allegiance(self):
         print "I serve", self.master
 
+    taunt = "Lugburz will hear of this !"
 
 class Goblin(Character):
     """ """
-    ability = "I fear not the light of sun !"
+    taunt = "I fear not the light of sun !"
 
 
-class UrukHai(Orc, Goblin):
+class UrukHai(Goblin, Orc):
     """ """
     master = "Saruman"
 
 
 class Elf(Character):
     """ """
-    ability = "I fear no mortal death"
+    taunt = "I fear no mortal death"
 
 
 class Dwarf(Character):
     """ """
-
+    taunt = "Very dangerous over short distances!"
 
 class Human(Character):
     """ """
-
+    taunt = "For the Alliance !"
 
 class Nazgul(Human):
     """ """
     master = "Sauron"
-
+    taunt = "Do not stand between a Nazgul and his prey"
 
 class Ent(Character):
     """
     """
+    taunt = "I am old as rock and mountain"
 
 
-class Maiar(Character) :
+
+class Maiar(Character):
     """
 
     """
 
 
-class Wizard(Maiar) :
+class Wizard(Maiar):
     """
 
     """
 
 
-class Hobbit(Character) :
+class Hobbit(Character):
     """
     """
 
 
-def spawn_characters ():
+def spawn_characters():
+    # s a i e
+    # strength agility intelligence
+    global gandalf
     gandalf = Wizard("Gandalf", *(91, 85, 97))
-    frodo = Hobbit("Frodo", *(91, 85, 97))
-    sam = Hobbit("Sam", *(91, 85, 97))
-    aragorn = Human("Aragorn", *(91, 85, 97))
-    legolas = Elf("Legolas", *(91, 85, 97))
-    gimli = Dwarf("Gimli", *(91, 85, 97))
-    faramir = Human("Faramir", *(91, 85, 97))
-    eomer = Human("Eomer", *(91, 85, 97))
-    eowyn = Human("Eowyn", *(91, 85, 97))
-    treebeard = Ent("Treebeard", *(91, 85, 97))
-    gollum = Hobbit("Gollum", *(91, 85, 97))
-    sauron = Maiar("Sauron", *(91, 85, 97))
-    saruman = Wizard("Saruman", *(91, 85, 97))
-    witch_king = Human("Witch King of Angmar", *(91, 85, 97))
-    balrog = Maiar("Balrog of Moria", *(91, 85, 97))
-    shelob = Maiar("Shelob", *(91, 85, 97))
-    gorbag = Orc("Gorbag", *(91, 85, 97))
-    lurtz = UrukHai("Lurtz", *(91, 85, 97))
+    global frodo
+    frodo = Hobbit("Frodo", *(85, 89, 91))
+    global sam
+    sam = Hobbit("Sam", *(86, 85, 88))
+    global aragorn
+    aragorn = Human("Aragorn", *(94, 91, 91))
+    global legolas
+    legolas = Elf("Legolas", *(91, 97, 90))
+    global gimli
+    gimli = Dwarf("Gimli", *(93, 85, 88))
+    global faramir
+    faramir = Human("Faramir", *(91, 89, 91))
+    global eomer
+    eomer = Human("Eomer", *(91, 89, 90))
+    global eowyn
+    eowyn = Human("Eowyn", *(90, 92, 90))
+    global treebeard
+    treebeard = Ent("Treebeard", *(94, 88, 90))
+    global gollum
+    gollum = Hobbit("Gollum", *(88, 93, 90))
+    global sauron
+    sauron = Maiar("Sauron", *(96, 90, 94))
+    global saruman
+    saruman = Wizard("Saruman", *(92, 84, 96))
+    global witch_king
+    witch_king = Human("Witch King of Angmar", *(93, 91, 90))
+    global balrog
+    balrog = Maiar("Balrog of Moria", *(95, 91, 90))
+    global shelob
+    shelob = Maiar("Shelob", *(90, 90, 90))
+    global gorbag
+    gorbag = Orc("Gorbag", *(86, 82, 75))
+    global lurtz
+    lurtz = UrukHai("Lurtz", *(90, 88, 88))
 
-spawn_characters()
 
+def create_character(name, race, *attributes):
+    """
 
+    :param name:
+    :param race:
+    :param attributes:
+    :return:
+    """
