@@ -1,6 +1,3 @@
-from collections import defaultdict, OrderedDict, namedtuple
-
-
 class Item(object):
     items_list = []
 

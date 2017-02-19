@@ -1,8 +1,6 @@
-from character import *
-from inventory import *
-from arena import *
 import time
 import random
+import character
 
 
 def combat(arena, character1, character2):
@@ -61,7 +59,7 @@ def combat(arena, character1, character2):
         round_number += 1
 
         attb_choice = random.randrange(2)
-        print "Attribute chosen to fight with is :", Character.Attributes._fields[attb_choice]
+        print "Attribute chosen to fight with is :", character.Character.Attributes._fields[attb_choice]
 
         if character1.attributes[attb_choice] > character2.attributes[attb_choice]:
             ch2_score -= 20
