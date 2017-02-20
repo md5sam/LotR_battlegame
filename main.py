@@ -5,6 +5,7 @@ import inventory
 import action
 import arena
 
+
 def main():
     """
     set up and teardown here
@@ -17,7 +18,6 @@ def main():
     # access all characters ONLY through Character class attribute : Character.character_lists
     # access all items ONLY through Item class attribute : Item.items_list
 
-
     print "Welcome to Middle Earth"
     print "-----------------------"
     time.sleep(1)
@@ -25,7 +25,6 @@ def main():
     print "Alliance characters are : Gandalf, Frodo, Sam, Aragorn, Legolas, Gimli, Faramir, Eomer, Treebeard, Eowyn"
     print "Mordor characters are : Sauron, Saruman, Witch King, Balrog of Moria, Gollum, Shelob, Gorbag, Lurtz"
     print "-----------------------"
-
 
     choice = random.randrange(len(character.Character.characters_list))
     hero = character.Character.characters_list[choice]
@@ -63,31 +62,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
- # for item in Item.items_list :
-    #     print type(item).__name__
-
-    # for k, v in Character.characters_dict.iteritems() :
-    #    print k, v
-
-    '''
-    print "Choosing Aragorn ..."
-    print character.aragorn
-
-    print "Aragorn picks Anduril ..."
-    character.aragorn.pick_item(inventory.anduril)
-
-    print character.aragorn.item
-
-    character.lurtz.pick_item(inventory.morgul_blade)
-
-    combat(arena.moria, character.aragorn, character.lurtz)
-
-    # for k, v in character.aragorn.items.iteritems():
-    #    print k, v.name, v.impact, v.regen_time
-
-    # print "Or would you like to create a character ?"
-    # create_character(name="Thingol", race="Elf", attributes=(90, 90, 90))
-    '''

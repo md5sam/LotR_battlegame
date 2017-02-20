@@ -7,9 +7,9 @@ def combat(arena, character1, character2):
     print "Prepare for combat between", character1.name, "and", character2.name, "!"
 
     time.sleep(1)
-    if character1.taunt :
+    if character1.taunt:
         print character1.name, "says :", character1.taunt
-        if character2.taunt :
+        if character2.taunt:
             print character2.name, "responds :", character2.taunt
     time.sleep(1)
 
@@ -20,15 +20,14 @@ def combat(arena, character1, character2):
     print character2.name, "starts with a score of 100"
     time.sleep(1)
 
-
     print "Applying arena advantage ..."
     time.sleep(2)
     # calculate and adjust for arena advantage
     arena_ad = arena_advantage(arena, character1, character2)
-    if str(type(character1).__name__) in arena_ad :
+    if str(type(character1).__name__) in arena_ad:
         ch1_score += 20
         print character1.name, "is strengthened by choice of arena : ", arena.name
-    if str(type(character2).__name__) in arena_ad :
+    if str(type(character2).__name__) in arena_ad:
         ch2_score += 20
         print character2.name, "is strengthened by choice of arena : ", arena.name
     else:
@@ -41,15 +40,15 @@ def combat(arena, character1, character2):
     wc_ad = weapon_class_advantage(character1.item, character2.item)
     if wc_ad == character1.item:
         ch2_score -= 20
-        print character1.name, "has chosen wisely the weapon: ", character1.item.name,\
+        print character1.name, "has chosen wisely the weapon: ", character1.item.name, \
             "which beats the weapon", character2.item.name
 
     elif wc_ad == character2.item:
         ch1_score -= 20
-        print character2.name, "has chosen wisely the weapon: ", character2.item.name,\
+        print character2.name, "has chosen wisely the weapon: ", character2.item.name, \
             "which beats the weapon", character1.item.name
 
-    else :
+    else:
         print "Both foes are equally matched in their choice of weapons!"
     time.sleep(2)
 
@@ -58,7 +57,7 @@ def combat(arena, character1, character2):
         print "Round :", round_number, "has begun... FIGHT!"
         round_number += 1
 
-        attb_choice = random.randrange(2)
+        attb_choice = random.randrange(3)
         print "Attribute chosen to fight with is :", character.Character.Attributes._fields[attb_choice]
 
         if character1.attributes[attb_choice] > character2.attributes[attb_choice]:

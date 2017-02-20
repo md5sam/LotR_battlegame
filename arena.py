@@ -8,11 +8,6 @@ class Arena(object):
         self.allegiance = allegiance
         self.arena_list.append(self)
 
-    # def add_advantage(self, advantage):
-    #    self.advantage.append(advantage)
-
-    # def add_disadvantage(self, advantage):
-    #    self.disadvantage.append(disdvantage)
 
 class Mountain(Arena):
     """

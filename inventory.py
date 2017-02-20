@@ -56,4 +56,3 @@ def populate_inventory():
     axe_gimli = MeleeWeapon("Gimli's Axe", 30, 1)
     global morgul_blade
     morgul_blade = MeleeWeapon("Morgul Blade", 40, 1)
-

@@ -59,6 +59,7 @@ class Orc(Character):
 
     taunt = "Lugburz will hear of this !"
 
+
 class Goblin(Character):
     """ """
     taunt = "I fear not the light of sun !"
@@ -78,20 +79,22 @@ class Dwarf(Character):
     """ """
     taunt = "Very dangerous over short distances!"
 
+
 class Human(Character):
     """ """
     taunt = "For the Alliance !"
+
 
 class Nazgul(Human):
     """ """
     master = "Sauron"
     taunt = "Do not stand between a Nazgul and his prey"
 
+
 class Ent(Character):
     """
     """
     taunt = "I am old as rock and mountain"
-
 
 
 class Maiar(Character):
