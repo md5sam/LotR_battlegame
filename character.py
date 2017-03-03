@@ -109,6 +109,11 @@ class Wizard(Maiar):
     """
 
 
+class DarkMaiar(Maiar):
+    """
+
+    """
+
 class Hobbit(Character):
     """
     """
@@ -140,13 +145,13 @@ def spawn_characters():
     global gollum
     gollum = Hobbit("Gollum", *(88, 93, 90))
     global sauron
-    sauron = Maiar("Sauron", *(96, 90, 94))
+    sauron = DarkMaiar("Sauron", *(96, 90, 94))
     global saruman
     saruman = Wizard("Saruman", *(92, 84, 96))
     global witch_king
-    witch_king = Human("Witch King of Angmar", *(93, 91, 90))
+    witch_king = Nazgul("Witch King of Angmar", *(93, 91, 90))
     global balrog
-    balrog = Maiar("Balrog of Moria", *(95, 91, 90))
+    balrog = DarkMaiar("Balrog of Moria", *(95, 91, 90))
     global shelob
     shelob = Maiar("Shelob", *(90, 90, 90))
     global gorbag
